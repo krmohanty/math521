@@ -1,0 +1,184 @@
+%% Template .tex file to be used for introduction of LaTeX.
+%% Written by Jen-Mei Chang @ CSULB, last updated 9/15/2009
+
+\documentclass[11pt]{amsart}
+%% other common choices: article, article, book, report
+%% default size = 12
+
+%% declaration of packages. If your document requires a special package,
+%% you would include the .cls or .sty file here.
+
+\usepackage{xy}
+\usepackage{amscd,amssymb,latexsym,hyperref,fancyhdr,lastpage}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{verbatim}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{graphics} % for pdf, bitmapped graphics files
+\usepackage{epsfig} % for postscript graphics files
+\usepackage{subfigure}
+\usepackage{mathrsfs}
+
+%% define environment for theorems, definition, etc.
+%%% theorem styles %%%%%%%%%
+\theoremstyle{plain}% default \newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[section]
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{property}{Property}[section]
+\newtheorem{algorithm}{Algorithm}[section]
+%\restylefloat{figure} \restylefloat{table}
+
+\theoremstyle{remark}
+\newtheorem*{notation}{Notation}
+
+\numberwithin{equation}{section}
+
+
+%%%%%%%% begin document %%%%%%%%%%
+\begin{document}
+\title[Crash Course in \LaTeX]{A \LaTeX template}
+\author{Jen-Mei Chang}
+\address{Department of Mathematics and Statistics\\
+California State University, Long Beach\\
+1250 Bellflower Blvd.\\
+Long Beach, CA 90840-1001 \\
+}
+\email{jen-mei.chang@csulb.edu. Last updated: 1/13/2014}
+
+
+\begin{abstract}
+To get you started on your first professional document.Hello.
+\end{abstract}
+
+\maketitle
+\section{Softwares}
+To create a professional-looking document (without Equation Editor in Word) in .pdf from \LaTeX, you might consider the following softwares.
+\begin{itemize}
+    \item On Windows platform, you will need to install
+            \begin{enumerate}
+                \item  MiKTeX: \url{http://miktex.org/download}
+%                \item  Ghostscript (http://pages.cs.wisc.edu/$\sim$ghost/),
+                \item Ghostscript: \url{http://www.ghostscript.com/download/gsdnld.html}
+%                \item  GSView (http://pages.cs.wisc.edu/$\sim$ghost/), and
+                \item  GSView: \url{http://pages.cs.wisc.edu/~ghost/gsview/index.htm}
+                \item  Adobe Reader:  \url{http://get.adobe.com/reader/enterprise/}
+            \end{enumerate}
+                and one of the following:
+            \begin{itemize}
+                \item (Free Download) Texmaker \url{http://www.xm1math.net/texmaker/}
+                \item (30-day Free Trial) WinEdt: \url{http://www.winedt.com/}
+                \item  (Free Download) TeXnicCenter:  \url{http://www.texniccenter.org/}
+                \item  Lyx: \url{http://www.lyx.org/}
+            \end{itemize}
+
+    \item Macintosh platform: TeXShop: \url{http://www.uoregon.edu/~koch/texshop/}
+\end{itemize}
+
+\section{Introduction}
+\subsection{Enumeration}
+\begin{itemize}
+    \item There are generally two kinds of enumeration: numbers or bullets.
+    \item Or you can manually change it to anything you want.
+        \begin{enumerate}
+            \item[:)] Smile.
+            \item[$\diamond$] A special character.
+        \end{enumerate}
+\end{itemize}
+
+\subsection{Mathematical Equations}
+\begin{enumerate}
+    \item Inline mathematical equation: $\frac{p}{q} = \sqrt{2}$.
+    \item Inline display style: $\displaystyle \sum_{i=1}^n \frac1{2^i}$.
+    \item Mathematical environment.
+    \[
+    X =
+    \begin{bmatrix}
+    1 & 0& \ldots & 0 \\
+    0 & 1 & \cdots & 0 \\
+    
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & \cdots & 1
+    \end{bmatrix}.
+    \]
+    or, e.g., Equation~(\ref{Eq:ex_eqn}).
+\begin{eqnarray}\label{Eq:ex_eqn}
+P \vee Q \Rightarrow R  &\Leftrightarrow& \sim (P \vee Q) \vee R\\
+&\Leftrightarrow& (\sim P \wedge \sim Q) \vee R\\
+&\Leftrightarrow& R \vee (\sim P \wedge \sim Q)\\
+&\Leftrightarrow& (R \vee \sim P) \wedge (R \vee \sim Q)\\
+&\Leftrightarrow& (P \Rightarrow R) \wedge (Q \Rightarrow R)
+\end{eqnarray}
+Can you tell the difference of this one and the one below?
+
+\begin{eqnarray*}
+P \vee Q \Rightarrow R  &\Leftrightarrow& \sim (P \vee Q) \vee R\\
+&\Leftrightarrow& (\sim P \wedge \sim Q) \vee R\\
+&\Leftrightarrow& R \vee (\sim P \wedge \sim Q)\\
+&\Leftrightarrow& (R \vee \sim P) \wedge (R \vee \sim Q)\\
+&\Leftrightarrow& (P \Rightarrow R) \wedge (Q \Rightarrow R)
+\end{eqnarray*}
+
+
+\end{enumerate}
+
+\subsection{Table}
+Tabular environment is probably one of the most useful tool in \LaTeX.
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{cc|c|c|c} \hline
+$P$ & $Q$ & $P\vee Q$ & $P\wedge Q$& $\sim P$  \\ \hline
+T & T & T & T & F \\
+T & F & T & F & \\
+F & T & T & F & T  \\
+F & F & F & F  & \\ \hline
+\end{tabular}
+\caption{Always remember to add table caption for your readers!}
+\end{center}
+\end{table}
+
+\subsection{Graphics}
+
+Make sure you specify the path to find the image. pdfLaTeX can read common image formats such as jpeg and pdf; however, LaTeX can only understand .ps, .eps, and alike. And that's why you need to install ghostview for viewing .ps and .eps files.
+
+Some common ways to create bitmap images are to use Microsoft products, such as drawing tools in Word and PowerPoint, and xfig. Of course, if you have fancy softwares like Adobe Illustrator, then you are much more flexible in terms of drawing.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1.5in,height=2in]{./sample_img.jpg}
+\caption{How mathematical.}\label{fig:mathImg}
+\end{center}
+\end{figure}
+
+\subsection{References}
+
+\begin{enumerate}
+    \item To include a reference in your document, use the command
+        \begin{verbatim}
+            \cite{CH_07}
+         \end{verbatim}
+         and it will look like this:~\cite{CH_07}.  To reference anything else in the document, use the          commands
+        \begin{verbatim}
+            \ref{Eq:equationName}
+            \ref{fig:figureName}
+            \ref{S:sectionName}
+            \ref{ta:tableName}
+            ...
+         \end{verbatim}
+
+    \item To compile your document with appropriate references: LaTeX once, bibTeX once, LaTeX twice.
+    \item If you need to find something, best resource is Mr. Google. Else, a good reference book is {\em The \LaTeX Companion}, 2nd edition, by {\bf Frank Mittelbach} and {\bf Michel Goossens}, published by Addison Wesley.
+\end{enumerate}
+
+
+\bibliographystyle{plain}
+\bibliography{sample_reference}
+\end{document}
